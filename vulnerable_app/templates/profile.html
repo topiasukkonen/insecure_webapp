@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Profile</h2>
+    <p>Welcome, {{ user.username }}!</p>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="bio" placeholder="Enter your bio">{{ user_profile.bio }}</textarea>
+        <button type="submit">Update Bio</button>
+    </form>
+</body>
+</html>

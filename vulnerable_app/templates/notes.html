@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}My Notes - Insecure Notes App{% endblock %}
+
+{% block header %}My Notes{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Note Title" required>
+        <textarea name="content" placeholder="Note Content" required></textarea>
+        <button type="submit">Add Note</button>
+    </form>
+    <h2>Your Notes:</h2>
+    {% for note in notes %}
+        <div class="note">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.content }}</p>
+        </div>
+    {% empty %}
+        <p>You don't have any notes yet.</p>
+    {% endfor %}
+{% endblock %}

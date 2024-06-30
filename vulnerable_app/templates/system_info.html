@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}System Information - Insecure Notes App{% endblock %}
+
+{% block header %}System Information{% endblock %}
+
+{% block content %}
+    <h2>System Information</h2>
+    <form method="post">
+        {% csrf_token %}
+        <select name="info_type">
+            <option value="disk">Disk Usage</option>
+        </select>
+        <button type="submit">Get Info</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">Error: {{ error }}</p>
+    {% endif %}
+    {% if info %}
+        {% for type, output in info.items %}
+            <h3>{{ type|title }} Information:</h3>
+            <pre>{{ output }}</pre>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
