@@ -11,3 +11,5 @@ source venv/bin/activate
 pip install django
 - Run the project:
 python3 manage.py runserver
+
+Flaws are from the OWASP Top 10 2021 list.
